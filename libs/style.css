@@ -1,0 +1,41 @@
+h1{
+    text-align: center;
+    color: cornflowerblue;
+}
+.fastsearch{
+    text-align: center;
+}
+.addbook{
+    background-color:  #4CAF50;
+    text-decoration: none;
+    color: white;
+    border: solid 5px  #4CAF50;
+}
+
+tr:hover {background-color:#c9c5c5;}
+.center {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 3px 5px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
