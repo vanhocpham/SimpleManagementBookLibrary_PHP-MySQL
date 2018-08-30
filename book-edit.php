@@ -1,16 +1,19 @@
 <?php
 
 require './libs/book.php';
+require './libs/PaginationControl.php';
 
+connect_db();
 //take information user wanna edit
 $id = isset($_GET['id']) ? (int)$_GET['id'] : '';
+
 if ($id){
     $data = get_book_id($id);
 }
 
 // if not data -> not book need edit
 if (!$data){
-    header("location: book-list.php");
+    header("location: book-list.php?pn=");
 }
 
 //if user submit form
@@ -25,21 +28,21 @@ if (!empty($_POST['edit_book']))
     // Validate information
     $errors = array();
     if (empty($data['b_name'])){
-        $errors['b_name'] = 'you dont type book name';
+        $errors['b_name'] = "you don't type book name";
     }
 
     if (empty($data['b_style'])){
-        $errors['b_style'] = 'You dont type book style';
+        $errors['b_style'] = "You don't type book style";
     }
     if (empty($data['b_author'])){
-        $errors['b_author']='You dont type author name';
+        $errors['b_author']="You don't type author name";
     }
 
     // Not error -> insert
     if (!$errors){
         edit_book($data['b_id'], $data['b_name'], $data['b_style'], $data['b_author']);
-        // return main page
-        header("location: book-list.php");
+        // return page have id wanna edit
+        header("location: book-list.php?pn=");
     }
 }
 
@@ -56,7 +59,7 @@ disconnect_db();
 <body>
 <h1 style="text-align: center;color: cornflowerblue">Edit book you wanna</h1>
 <a href="book-list.php">Return</a> <br/> <br/>
-<form method="post" action="book-edit.php?id=<?php echo $data['b_id']; ?>">
+<form method="post" action="">
     <table width="50%" border="1" cellspacing="0" cellpadding="10">
         <tr>
             <td>Name</td>
@@ -70,10 +73,10 @@ disconnect_db();
             <td>
                 <select name="style">
                     <option>Choose Style</option>
-                    <option value="Truyện Ngắn"<?php if (!empty($data['b_style']) && $data['b_style'] == 'Truyện Ngắn') echo 'selected'; ?>>Truyện Ngắn</option>
-                    <option value="Viễn Tưởng"<?php if (!empty($data['b_style']) && $data['b_style'] == 'Viễn Tưởng') echo 'selected'; ?>>Viễn Tưởng</option>
-                    <option value="Ký Sự"<?php if (!empty($data['b_style']) && $data['b_style'] == 'Ký Sự') echo 'selected'; ?>>Ký Sự</option>
-                    <option value="Đạo Đức" <?php if (!empty($data['b_style']) && $data['b_style'] == 'Đạo Đức') echo 'selected'; ?>>Đạo Đức</option>
+                    <option value="1"<?php if (!empty($data['b_style']) && $data['b_style'] == '1') echo 'selected'; ?>>Truyện Ngắn</option>
+                    <option value="2"<?php if (!empty($data['b_style']) && $data['b_style'] == '2') echo 'selected'; ?>>Viễn Tưởng</option>
+                    <option value="3"<?php if (!empty($data['b_style']) && $data['b_style'] == '3') echo 'selected'; ?>>Ký Sự</option>
+                    <option value="4" <?php if (!empty($data['b_style']) && $data['b_style'] == '4') echo 'selected'; ?>>Đạo Đức</option>
                 </select>
                 <?php if (!empty($errors['b_style'])) echo $errors['b_style']; ?>
             </td>
