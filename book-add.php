@@ -7,6 +7,9 @@
  */
 
 require './libs/book.php';
+require './libs/PaginationControl.php';
+
+
 
 // if user submit form
 if (!empty($_POST['add_book']))
@@ -19,25 +22,26 @@ if (!empty($_POST['add_book']))
     // Validate information
     $errors = array();
     if (empty($data['b_name'])){
-        $errors['b_name'] = 'You dont type book name'  ;
+        $errors['b_name'] = "You don't type book name"  ;
     }
 
     if (empty($data['b_style'])){
-        $errors['b_style'] = 'You dont type book style';
+        $errors['b_style'] = "You don't type book style";
     }
     if (empty($data['b_author'])){
-        $errors['b_author']='You dont type author name';
+        $errors['b_author']="You don't type author name";
     }
     // not error->insert
     if (!$errors){
         add_book($data['b_name'], $data['b_style'], $data['b_author']);
         // return to main page
-        header("location: book-list.php");
+        header("location: book-list.php?pn=".$last);
     }
 }
 
 disconnect_db();
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +54,8 @@ disconnect_db();
         <h1 style="text-align: center;color: cornflowerblue" >Add book you wanna</h1>
         <a href="book-list.php">Return</a> <br/> <br/>
         <form method="post" action="book-add.php">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+
+            <table width="50%" border="1" cellspacing="0" cellpadding="10" >
                 <tr>
                     <td>Name</td>
                     <td>
@@ -63,10 +68,10 @@ disconnect_db();
                     <td>
                         <select name="style">
                             <option value="0">Choose Style</option>
-                            <option value="Truyện Ngắn">Truyện Ngắn</option>
-                            <option value="Viễn Tưởng">Viễn Tưởng</option>
-                            <option value="Ký Sự">Ký Sự</option>
-                            <option value="Đạo Đức">Đạo Đức</option>
+                            <option value="1">Truyện Ngắn</option>
+                            <option value="2">Viễn Tưởng</option>
+                            <option value="3">Ký Sự</option>
+                            <option value="4">Đạo Đức</option>
                         </select>
                         <?php if (!empty($errors['b_style'])) echo $errors['b_style']; ?>
                     </td>
@@ -85,6 +90,7 @@ disconnect_db();
                     </td>
                 </tr>
             </table>
+
         </form>
 
     </body>
