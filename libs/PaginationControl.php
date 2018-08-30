@@ -9,7 +9,7 @@
     $conn=mysqli_connect("localhost","root","","myDB") or die("Can\'t connect to database") ;
     //set font connect
     mysqli_set_charset($conn,'utf8');
-    $query=mysqli_query($conn,"select count(b_id) from tb_book");
+    $query=mysqli_query($conn,"select count(b_id) as total from tb_book");
     //total row
     $row = mysqli_fetch_row($query);
     //index row=0
@@ -35,7 +35,10 @@
     }
     //set the range of rows to query for chose pagenum
     $limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
-    $nquery=mysqli_query($conn,"select * from tb_book $limit");
+    $nquery=mysqli_query($conn,"SELECT tb_book.b_id, tb_book.b_name, tb_style.s_style,tb_book.b_author,tb_book.b_date 
+                                       FROM tb_book 
+                                       INNER JOIN tb_style ON tb_book.b_style=tb_style.s_id
+                                       ORDER BY tb_book.b_id $limit");
     //establish $paginationCtrls variable
     $paginationCtrls = '';
 
