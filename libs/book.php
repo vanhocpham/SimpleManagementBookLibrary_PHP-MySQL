@@ -126,6 +126,17 @@
         $book_style=addslashes($book_style);
         $book_author=addslashes($book_author);
 
+
+        $book_name = trim( $book_name);
+        $book_name = stripslashes( $book_name);
+        $book_name = htmlspecialchars( $book_name);
+
+        $book_author = trim($book_author);
+        $book_author = stripslashes($book_author);
+        $book_author = htmlspecialchars($book_author);
+
+
+
         $sql="INSERT INTO tb_book(b_name,b_style,b_author)
               VALUES 
               ('$book_name','$book_style','$book_author')";
@@ -144,6 +155,15 @@
         $book_name =addslashes($book_name);
         $book_style=addslashes($book_style);
         $book_author=addslashes($book_author);
+
+        //fix xss injection
+        $book_name = trim( $book_name);
+        $book_name = stripslashes( $book_name);
+        $book_name = htmlspecialchars( $book_name);
+
+        $book_author = trim($book_author);
+        $book_author = stripslashes($book_author);
+        $book_author = htmlspecialchars($book_author);
 
         $sql="UPDATE tb_book SET
                b_name='$book_name',b_style='$book_style',b_author='$book_author' WHERE b_id=$book_id";
@@ -165,6 +185,7 @@
 
         return $query;
     }
+
 
 
     //function search book follow id, name , style, author
