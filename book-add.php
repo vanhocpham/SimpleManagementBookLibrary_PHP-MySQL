@@ -35,7 +35,7 @@ if (!empty($_POST['add_book']))
     if (!$errors){
         add_book($data['b_name'], $data['b_style'], $data['b_author']);
         // return to main page
-        header("location: book-list.php?pn=".$last);
+        header("location: book-list.php?page=".$last);
     }
 }
 
