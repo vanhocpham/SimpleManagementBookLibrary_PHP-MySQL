@@ -15,7 +15,7 @@ if (isset($_GET['search']))
     $search = stripslashes( $search);
     $search = htmlspecialchars( $search);
     $conn=mysqli_connect("localhost","root","","myDB") or die("Can\'t connect to database") ;
-    $pageurl='localhost:8088/projectsookLibrary/book-list.php?search='.$search;
+
     //set font connect
     mysqli_set_charset($conn,'utf8');
     $query=mysqli_query($conn,"SELECT tb_book.b_id,tb_book.b_name,tb_book.b_author,tb_book.b_date,tb_style.s_style FROM tb_book
