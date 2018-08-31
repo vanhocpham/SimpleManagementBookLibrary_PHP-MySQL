@@ -25,8 +25,8 @@
     //establish $page_num variable
     $pagenum = 1;
     //update URL follow page_num var
-    if(isset($_GET['pn'])){
-        $pagenum = preg_replace('#[^0-9]#', '', $_GET['pn']);
+    if(isset($_GET['page'])){
+        $pagenum = preg_replace('#[^0-9]#', '', $_GET['page']);
     }
     if ($pagenum < 1) {
     $pagenum = 1;
@@ -37,7 +37,7 @@
     $limit = 'LIMIT ' .($pagenum - 1) * $page_rows .',' .$page_rows;
     $nquery=mysqli_query($conn,"SELECT tb_book.b_id, tb_book.b_name, tb_style.s_style,tb_book.b_author,tb_book.b_date 
                                        FROM tb_book 
-                                       INNER JOIN tb_style ON tb_book.b_style=tb_style.s_id
+                                       INNER JOIN tb_style ON tb_book.b_style=tb_style.s_id 
                                        ORDER BY tb_book.b_id $limit");
     //establish $paginationCtrls variable
     $paginationCtrls = '';
@@ -47,12 +47,12 @@
         //check condition page is page 1 not previous or next
         if($pagenum>1){
             $previous=$pagenum-1;
-            $paginationCtrls.='<a href="'.$_SERVER['PHP_SELF'].'?pn='.$previous.'" class="btn btn-default">Previous</a> &nbsp; &nbsp; ';
+            $paginationCtrls.='<a href="'.$_SERVER['PHP_SELF'].'?page='.$previous.'" class="btn btn-default">Previous</a> &nbsp; &nbsp; ';
         }
         //Render clickable number link that should appear on
         for($i=$pagenum-4;$i<$pagenum;$i++){
             if($i>0) {
-                $paginationCtrls.='<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
+                $paginationCtrls.='<a href="'.$_SERVER['PHP_SELF'].'?page='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
             }
 
         }
@@ -60,7 +60,7 @@
         $paginationCtrls.= '<a class="active">'.$pagenum.'</a> &nbsp; ';
         //Render clickable number link that should appear on the right of the target page number
         for($i=$pagenum+1;$i<=$last;$i++){
-            $paginationCtrls.='<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
+            $paginationCtrls.='<a href="'.$_SERVER['PHP_SELF'].'?page='.$i.'" class="btn btn-default">'.$i.'</a> &nbsp; ';
             if($i>=$pagenum+4){
                 break;
             }
@@ -69,7 +69,7 @@
         //this does the same as above,only checking if we are on the last page,and then generate the "Next"
         if($pagenum!=$last){
             $next=$pagenum+1;
-            $paginationCtrls.= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$next.'" class="btn btn-default">Next</a> ';
+            $paginationCtrls.= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?page='.$next.'" class="btn btn-default">Next</a> ';
         }
 
 
