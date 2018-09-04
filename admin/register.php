@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script type="text/javascript" src="./js/categories-main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
 </headed>
 <body>
 <?php
@@ -19,8 +20,9 @@
 include_once './templates/categories-header.php'
 ?>
 <br>
+
 <div class="container">
-    <div class="card mx-auto" style="width: 20rem;">
+    <div class="card mx-auto" style="width: 30rem;">
         <div class="card-header"><i class="fa fa-bullhorn">&nbsp;&nbsp;</i><span class="text-success">Register</span></div>
          <div class="card-body">
             <form id="register_form" action="<?php echo DOMAIN.""?>">
@@ -44,8 +46,8 @@ include_once './templates/categories-header.php'
                 <div class="form-group">
                     <label for="usertype">Usertype</label>
                     <select name="usertype" class="form-control" id="usertype">
-                        <option value="0">Admin</option>
-                        <option value="1">Other</option>
+                        <option value="0">Other</option>
+                        <option value="1">Admin</option>
                     </select>
                 </div>
                 <button type="submit" name="user_register" class="btn btn-primary">
