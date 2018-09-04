@@ -12,15 +12,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script type="text/javascript" src="./js/categories-main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
 </headed>
 <body>
     <?php
         //Navar
         include_once './templates/categories-header.php'
     ?>
-    <br><br>
+    <br>
     <div class="container">
-        <div class="card mx-auto" style="width: 20rem;">
+        <div class="card mx-auto" style="width: 25rem;">
             <img class="card-img-top" style="width: 40%; margin-left: 96px;margin-top: 10px;" src="./images/login.png" alt="Login Icon">
             <div class="card-body">
                 <h5 class="card-title"></h5>
@@ -38,13 +39,13 @@
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-lock">&nbsp;</i>Login</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in-alt">&nbsp;</i>Login</button>
                     <span><a href="register.php" style="margin-left: 30px;">Register</a></span><br>
                 </form>
         </div>
 
             <div>
-                <div class="card-footer"><a href="#">Forget Password?</a></div>
+                <div class="card-footer"><a href="#" >Forget Password?</a></div>
             </div>
         </div>
     </div>
