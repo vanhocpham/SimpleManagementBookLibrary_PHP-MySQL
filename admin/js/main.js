@@ -41,16 +41,25 @@ $(document).ready(function(){
             $("#p2_error").html("<span class='text-danger'>Please Enter more than 8 digit password</span>");
             status = false;
         }else{
-            if(pass2.val()==pass1.val()){
-                pass2.removeClass("border-danger");
-                $("#p2_error").html("");
-                status = true;
-            }
-            else {
-                pass2.addClass("border-danger");
-                $("#p2_error").html("<span class='text-danger'></span>");
-                status = false;
-            }
+            pass2.removeClass("border-danger");
+            $("#p2_error").html("");
+            status = false;
+        }
+        if(type.val()=="") {
+            type.addClass("border-danger");
+            $("#t_error").html("<span class='text-danger'>Let's a usertype</span>");
+            status = false;
+        }else {
+            type.removeClass("border-danger");
+            $("#t_error").html("");
+            status=true;
+        }
+        if(pass1.val()==pass2.val()){
+
+        }else {
+            pass2.addClass("border-danger");
+            $("#p2_error").html("<span class='text-danger'>Please Enter more than 8 digit password</span>");
+            status=false;
         }
     })
 })
