@@ -20,7 +20,7 @@
 include_once './templates/categories-header.php'
 ?>
 
-<br>
+<br><br><br>
 <div class="container" >
     <div class="row">
         <div class="col-md-4">
@@ -93,7 +93,9 @@ include_once './templates/categories-header.php'
     </div>
 </div>
 
+
         <?php
+
             include_once './templates/categories-modal.php';
             include_once './templates/style-modal.php';
             include_once './templates/author-modal.php';
