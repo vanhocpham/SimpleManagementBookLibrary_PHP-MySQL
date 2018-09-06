@@ -18,11 +18,13 @@
     <?php
         //Navar
         include_once './templates/categories-header.php'
+
+    
     ?>
-    <br>
+    <br><br><br>
     <div class="container">
         <div class="card mx-auto" style="width: 25rem;">
-            <img class="card-img-top" style="width: 40%; margin-left: 96px;margin-top: 10px;" src="./images/login.png" alt="Login Icon">
+            <img class="card-img-top mx-auto" style="width: 40%;" src="./images/login.png" alt="Login Icon">
             <div class="card-body">
                 <h5 class="card-title"></h5>
                 <form>
