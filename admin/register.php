@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+
 </head>
 <body>
 <?php
@@ -47,7 +48,7 @@ include_once './templates/categories-header.php'
                 <div class="form-group">
                     <label for="usertype">Usertype</label>
                     <select name="usertype" class="form-control" id="usertype">
-                        <option>Choose User Type</option>
+                        <option value="">Choose User Type</option>
                         <option value="Admin">Admin</option>
                         <option value="Other">Other</option>
                     </select>
@@ -64,71 +65,7 @@ include_once './templates/categories-header.php'
 
     </div>
 </div>
-
-<script type="text/javascript" >$(document).ready(function(){
-        $("#register_form").on("submit",function(){
-            var status = false;
-            var name = $("#username");
-            var email = $("#email");
-            var pass1 = $("#password1");
-            var pass2 = $("#password2");
-            var type = $("#usertype");
-
-            var e_patt = new RegExp(/^[a-z0-9_-]+(\.[a-z0-9_-]+)*@[a-z0-9_-]+(\.[a-z0-9_-]+)*(\.[a-z]{2,4})$/);
-            if(name.val() == "" || name.val().length < 6){
-                name.addClass("border-danger");
-                $("#u_error").html("<span class='text-danger'>Please Enter Name and Name should be more than 6 char</span>");
-                status = false;
-            }else{
-                name.removeClass("border-danger");
-                $("#u_error").html("");
-                status = true;
-            }
-            if(!e_patt.test(email.val())){
-                email.addClass("border-danger");
-                $("#e_error").html("<span class='text-danger'>Please Enter Valid Email Address</span>");
-                status = false;
-            }else{
-                email.removeClass("border-danger");
-                $("#e_error").html("");
-                status = true;
-            }
-            if(pass1.val()==""||pass1.val().length<8){
-                pass1.addClass("border-danger");
-                $("#p1_error").html("<span class='text-danger'>Please Enter more than 8 digit password</span>");
-                status = false;
-            }else{
-                pass1.removeClass("border-danger");
-                $("#p1_error").html("");
-                status = true;
-            }
-            if(pass2.val()==""||pass2.val().length<8){
-                pass2.addClass("border-danger");
-                $("#p2_error").html("<span class='text-danger'>Please Enter more than 8 digit password</span>");
-                status = false;
-            }else{
-                pass2.removeClass("border-danger");
-                $("#p2_error").html("");
-                status = false;
-            }
-            if(type.val()=="") {
-                type.addClass("border-danger");
-                $("#t_error").html("<span class='text-danger'>Let's a usertype</span>");
-                status = false;
-            }else {
-                type.removeClass("border-danger");
-                $("#t_error").html("");
-                status=true;
-            }
-            if(pass1.val()==pass2.val()){
-
-            }else {
-                pass2.addClass("border-danger");
-                $("#p2_error").html("<span class='text-danger'>Password is not matched</span>");
-                status=false;
-            }
-        })
-    })</script>
+<script type="text/javascript" src="js/main.js"></script>
 
 
 </body>
