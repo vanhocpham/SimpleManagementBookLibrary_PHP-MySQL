@@ -10,7 +10,7 @@ With this project my main target:
 
 ### Tech
 
-Dillinger uses a number of open source projects to work properly:
+My project uses a number of open source projects to work properly:
 
 * [PHP] - using languge PHP to create site.
 * [Javascript] - using javascript to create function
