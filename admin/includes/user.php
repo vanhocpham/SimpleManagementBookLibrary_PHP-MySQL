@@ -36,7 +36,7 @@ class User
         if ($this->emailExists($email)) {
             return "EMAIL_ALREADY_EXISTS";
         }else{
-            $pass_hash = password_hash($password,PASSWORD_BCRYPT,["cost"=>8]);
+            $pass_hash =md5('hoc'.$password);
             $date = date("Y-m-d");
             $notes = "";
             $pre_stmt = $this->con->prepare("INSERT INTO `user`(`username`, `email`, `password`, `usertype`, `register_date`, `last_login`, `notes`)
@@ -62,7 +62,7 @@ class User
             return "NOT_REGISTERD";
         }else{
             $row = $result->fetch_assoc();
-            if (password_verify($password,$row["password"])) {
+            if ($row["password"]==md5('hoc'.$password)) {
                 $_SESSION["userid"] = $row["id"];
                 $_SESSION["username"] = $row["username"];
                 $_SESSION["last_login"] = $row["last_login"];
@@ -73,9 +73,9 @@ class User
                 $pre_stmt->bind_param("ss",$last_login,$email);
                 $result = $pre_stmt->execute() or die($this->con->error);
                 if ($result) {
-                    return 1;
+                    return "<br>CORRECT_PASSWORD";
                 }else{
-                    return 0;
+                    return "<br>PASSWORD_NOT_MATCHED";
                 }
 
 
@@ -86,6 +86,3 @@ class User
     }
 
 }
- $user=new User();
- echo $user->createUserAccount("hiworld1","hiworldjsc1@gmail.com","hiworld","Other");
- echo $user->userLogin("hiworldjsc1@gmail.com","hiworld");
