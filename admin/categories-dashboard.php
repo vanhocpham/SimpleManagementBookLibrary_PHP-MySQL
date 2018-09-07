@@ -22,6 +22,18 @@ include_once './templates/categories-header.php'
 
 <br><br><br>
 <div class="container" >
+    <?php
+    if (isset($_GET['msg'])AND !empty($_GET['msg'])){
+        ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_GET['msg'];?>&nbsp;&nbsp;&nbsp;<i class="fa fa-award">&nbsp;</i>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <?php
+    }
+    ?>
     <div class="row">
         <div class="col-md-4">
             <div class="card mx-auto" >
