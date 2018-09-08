@@ -16,7 +16,7 @@ My project uses a number of open source projects to work properly:
 * [Javascript] - using javascript to create function
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [Ajax](https://www.w3schools.com/jquery/jquery_ref_ajax.asp) - create function for site not refresh site
-* [MySQL](https://www.w3schools.com/jquery/jquery_ref_ajax.asp) - HTML to Markdown converter
+* [MySQL](https://www.w3schools.com/jquery/jquery_ref_ajax.asp) - Connect to database
 * [jQuery] - duh
 
 
