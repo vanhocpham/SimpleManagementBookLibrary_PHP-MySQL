@@ -10,6 +10,7 @@ class Database{
     public function connect(){
         include_once 'contants.php';
         $this->con=new Mysqli(HOST,USER,PASS,DB);
+        mysqli_set_charset($this->con,'utf8');
         if ($this->con){
             return $this->con;
         }

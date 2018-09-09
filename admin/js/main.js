@@ -131,8 +131,54 @@ $(document).ready(function(){
             })
         }
     })
+
+
+
+
+
+
+
+    //fetch categories
+    fetch_categories();
+    function fetch_categories() {
+        $.ajax({
+            url: DOMAIN+"/includes/process.php",
+            method: "POST",
+            data:{getCategories:1},
+            success: function (data) {
+                var root="<option value='0'>Root</option>"
+               $("#parent_cat").html(root+data);
+            }
+
+        })
+
+    }
+
+
+    //add categories
+    $("#categories-form").on("submit",function () {
+        if($("#categories_name").val()==""){
+            $("#categories_name").addClass("border-danger");
+            $("#cat_error").html("<span class='text-danger'>Please enter categories name</span>")
+        }else {
+            $.ajax({
+                url:DOMAIN+"/includes/process.php",
+                method: "POST",
+                data: $("#categories-form").serialize(),
+                success: function (data) {
+                  if(data=="CATEGORIES_ADDED"){
+                      $("#categories_name").removeClass("border-danger");
+                      $("#cat_error").html("<span class='text-success'>New categories added successful.</span>")
+                      fetch_categories();
+                  }else{
+                      alert(data);
+                  }
+                }
+            })
+        }
+    })
 })
-        //show password
+//show password
 function showPass() {
     var x = document.getElementById("log_pass");
     if (x.type === "password") {

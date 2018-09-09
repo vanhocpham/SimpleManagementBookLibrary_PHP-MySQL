@@ -1,3 +1,5 @@
+
+
 <div>
     <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary " >
         <a class="navbar-brand" href="#">Management Book System</a>
@@ -9,9 +11,15 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#"><i class="fa fa-home">&nbsp;</i>Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost:8088/Projects/BookLibrary/admin/categories-index.php"><i class="fa fa-user">&nbsp;</i>Logout</a>
-                </li>
+                <?php
+                if (isset($_SESSION["userid"])) {
+                    ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:8088/Projects/BookLibrary/admin/categories-index.php"><i class="fa fa-user">&nbsp;</i>Logout</a>
+                    </li>
+                    <?php
+                }
+                ?>
 
             </ul>
         </div>
