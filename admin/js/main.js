@@ -147,7 +147,25 @@ $(document).ready(function(){
             data:{getCategories:1},
             success: function (data) {
                 var root="<option value='0'>Root</option>"
-               $("#parent_cat").html(root+data);
+                var choose="<option value=''>Choose Categories</option>"
+                $("#parent_cat").html(root+data);
+                $("#select_cat").html(choose+data);
+            }
+
+        })
+
+    }
+
+    //fetch author
+    fetch_author();
+    function fetch_author() {
+        $.ajax({
+            url: DOMAIN+"/includes/process.php",
+            method: "POST",
+            data:{getAuthor:1},
+            success: function (data) {
+                var choose="<option value=''>Choose Authors</option>"
+                $("#select_author").html(choose+data);
             }
 
         })
@@ -168,7 +186,8 @@ $(document).ready(function(){
                 success: function (data) {
                   if(data=="CATEGORIES_ADDED"){
                       $("#categories_name").removeClass("border-danger");
-                      $("#cat_error").html("<span class='text-success'>New categories added successful.</span>")
+                      $("#cat_error").html("<span class='text-success'>New categories added successful.</span>");
+                      $("#categories_name").val("");
                       fetch_categories();
                   }else{
                       alert(data);
@@ -177,6 +196,56 @@ $(document).ready(function(){
             })
         }
     })
+
+
+    //add author
+    $("#author-form").on("submit",function () {
+        if($("#author_name").val()==""){
+            $("#author_name").addClass("border-danger");
+            $("#author_error").html("<span class='text-danger'>Please enter author name<span>");
+        }else{
+            $.ajax({
+                url:DOMAIN+"/includes/process.php",
+                method: "POST",
+                data: $("#author-form").serialize(),
+                success: function (data) {
+                    if(data=="AUTHOR_ADDED"){
+                        $("#author_name").removeClass("border-danger");
+                        $("#author_error").html("<span class='text-success'>New author added successful.<span>");
+                        $("#author_name").val("");
+                        fetch_author();
+                    }else {
+                        alert(data);
+                    }
+
+                }
+            })
+        }
+    })
+
+
+    //add book
+    $("#book_form").on("submit",function () {
+        $.ajax({
+            url:DOMAIN+"/includes/process.php",
+            method: "POST",
+            data: $("#book_form").serialize(),
+            success:function (data) {
+                if(data=="BOOK_ADDED"){
+                    $("#book_name").val("");
+                    $("#select_cat").val("");
+                    $("#select_author").val("");
+                    alert(data);
+                }else {
+                    console.log(data);
+                    alert(data);
+                }
+
+            }
+        })
+    })
+
+
 })
 //show password
 function showPass() {
