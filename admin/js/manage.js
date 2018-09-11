@@ -59,7 +59,9 @@ $(document).ready(function () {
             data:{getCategories:1},
             success: function (data) {
                 var root="<option value='0'>Root</option>";
+                var choose="<option value='0'>Choose Categories</option>";
                 $("#parent_cat").html(root+data);
+                $("#select_cat").html(choose+data);
 
             }
 
@@ -217,6 +219,94 @@ $(document).ready(function () {
             })
         }
     })
+
+
+    //------------------------Books----------------------------
+    manageBook(1);
+    function manageBook(pn) {
+        $.ajax({
+            url:DOMAIN+"/includes/process.php",
+            method: "POST",
+            data: {manageBook:1,pageno:pn},
+            success:function (data) {
+                $("#get_book").html(data);
+
+
+            }
+        })
+
+    }
+    $("body").delegate(".page-link","click",function () {
+        var pn=$(this).attr("pn");
+        manageBook(pn);
+    })
+    //delete book
+    //delete categories
+    $("body").delegate(".del_book","click",function () {
+        var did=$(this).attr("did");
+        if(confirm("Are you sure delete this book?")){
+            $.ajax({
+                url:DOMAIN+"/includes/process.php",
+                method: "POST",
+                data: {deleteBook:1,id:did},
+                success:function (data) {
+                    if(data=="DELETED"){
+                        alert("Delete successful!");
+                        manageBook(1);
+                    }else {
+                        alert(data);
+                    }
+
+                }
+            })
+
+        }else {
+
+        }
+    })
+
+    //update book
+
+    $("body").delegate(".edit_book","click",function () {
+        var eid=$(this).attr("eid");
+        $.ajax({
+            url:DOMAIN+"/includes/process.php",
+            method: "POST",
+            dataType: "json",
+            data:{updateBook:1,id:eid},
+            success: function (data) {
+                console.log(data);
+                $("#b_id").val(data["b_id"]);
+                $("#update_book").val(data["book_name"]);
+                $("#select_cat").val(data["cid"]);
+                $("#select_author").val(data["aid"]);
+                $("#added_date").val(data["added_date"])
+
+            }
+        })
+
+    })
+
+    $("#update_book_form").on("submit",function(){
+            $.ajax({
+                url : DOMAIN+"/includes/process.php",
+                method : "POST",
+                data  : $("#update_book_form").serialize(),
+                success : function(data){
+                    if(data=="UPDATED"){
+                        $("#update_book").val("");
+                        manageBook(1);
+                        window.location.href = "";
+                    }else {
+                        console.log(data);
+                        alert(data);
+                    }
+                }
+            })
+
+    })
+
+
 
 
 })
