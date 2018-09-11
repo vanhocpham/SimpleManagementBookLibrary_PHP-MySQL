@@ -85,27 +85,27 @@ include_once './templates/categories-header.php'
                     <h5 class="card-title">Categories</h5>
                     <p class="card-text">Here you can manage your categories and you add new parent and sub categories.</p>
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#form_categories"><i class="fa fa-plus">&nbsp;</i>Add</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-user-edit">&nbsp;</i>Manage</a>
+                    <a href="./includes/manage-categories.php" class="btn btn-success"><i class="fa fa-user-edit">&nbsp;</i>Manage</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mx-auto">
                 <div class="card-body mx-auto">
-                    <h5 class="card-title">Styles</h5>
-                    <p class="card-text">Here you can manage your book style and you add new book style.</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#form_style"><i class="fa fa-plus">&nbsp;</i>Add</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-user-edit">&nbsp;</i>Manage</a>
+                    <h5 class="card-title">Author</h5>
+                    <p class="card-text">Here you can manage your book author style and you add new book author style.</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#form_author"><i class="fa fa-plus">&nbsp;</i>Add</a>
+                    <a href="./includes/manage-author.php" class="btn btn-success"><i class="fa fa-user-edit">&nbsp;</i>Manage</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mx-auto"  >
                 <div class="card-body mx-auto">
-                    <h5 class="card-title">Authors</h5>
-                    <p class="card-text">Here you can manage your book authors and you add new book authors.</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#form_author"><i class="fa fa-plus">&nbsp;</i>Add</a>
-                    <a href="#" class="btn btn-success"><i class="fa fa-user-edit">&nbsp;</i>Manage</a>
+                    <h5 class="card-title">Book</h5>
+                    <p class="card-text">Here you can manage your book and you add new book .</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#form_book"><i class="fa fa-plus">&nbsp;</i>Add</a>
+                    <a href="./includes/manage-book.php" class="btn btn-success"><i class="fa fa-user-edit">&nbsp;</i>Manage</a>
                 </div>
             </div>
         </div>
@@ -116,8 +116,8 @@ include_once './templates/categories-header.php'
         <?php
 
             include_once './templates/categories-modal.php';
-            include_once './templates/style-modal.php';
             include_once './templates/author-modal.php';
+            include_once './templates/book-modal.php';
         ?>
 
 </body>
