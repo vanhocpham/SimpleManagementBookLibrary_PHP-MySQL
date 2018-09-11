@@ -15,11 +15,14 @@ class Manage{
     }
 
     public function manageRecordwithPagination($table,$pno){
-        $a = $this->pagination($this->con,$table,$pno,3);
+        $a = $this->pagination($this->con,$table,$pno,10);
         if ($table == "categories") {
             $sql = "SELECT p.cid,p.name_cat as category, c.name_cat as parent, p.status FROM categories p LEFT JOIN categories c ON p.parent_cat=c.cid ".$a["limit"];
-        }else if($table=="author"){
-            $sql = "SELECT * FROM ".$table." ".$a["limit"];
+        }else if($table == "book") {
+            $sql = "SELECT b.b_id,b.book_name,c.name_cat,a.author_name,b.added_date,b.b_status FROM book b,author a,categories c WHERE b.aid = a.aid AND b.cid = c.cid " . $a["limit"];
+        }
+        else {
+            $sql = "SELECT * FROM " . $table . " " . $a["limit"];
         }
         $result=$this->con->query($sql)or die($this->con->error);
         $rows=array();
@@ -32,7 +35,7 @@ class Manage{
     }
 
     private function pagination($con,$table,$pno,$n){
-        $query = $con->query("SELECT COUNT(*) as rows FROM ".$table);
+        $query = $con->query("SELECT COUNT(*) as rows FROM  ".$table);
         $row = mysqli_fetch_assoc($query);
         //$totalRecords = 100000;
         $pageno = $pno;
