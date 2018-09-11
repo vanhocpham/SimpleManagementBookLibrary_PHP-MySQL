@@ -1,4 +1,5 @@
 <?php
+
 require './libs/PaginationControl.php';
 require './libs/PaginationControlSearch.php';
 require 'book_search.php';
@@ -11,11 +12,23 @@ require 'book_search.php';
     <title>List Data Book Library</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
     <link rel="stylesheet" href="libs/style.css">
 
 </head>
-<header></header>
-
+<header>
+    <?php
+    require 'admin/templates/categories-header.php';
+    ?>
+</header>
+<body>
+<br><br><br><br>
 <h1> Management Information Library Book</h1>
 <p class="fastsearch">
         <span>ID:<input type="text" id="myInput" onkeyup="myFunction()"   placeholder="Type Content" size="20">&nbsp;&nbsp;&nbsp;&nbsp;</span>
