@@ -50,10 +50,10 @@ if (isset($_GET["pageno"])) {
     $pageno = $_GET["pageno"];
     $table = "paragraph";
     $array = pagination($con,$table,$pageno,10);
+
     $sql = "SELECT * FROM ".$table." ".$array["limit"];
 
     $query = $con->query($sql);
-
     while ($row = mysqli_fetch_assoc($query)) {
         echo "<div style='margin:0 auto;font-size:20px;'><b>".$row["pid"]."</b> ".$row["p_description"]."</div>";
     }
