@@ -49,7 +49,7 @@ include_once './templates/categories-header.php'
                     <h4 class="card-title">Profile Info</h4>
                     <p class="card-text"><i class="fa fa-user">&nbsp;</i>Pham Hoc</p>
                     <p class="card-text"><i class="fa fa-user">&nbsp;</i>Admin</p>
-                    <p class="card-text">Last Login: xxxx-xx-xx</p>
+                    <p class="card-text">Last Login: 2019-09-28</p>
                     <a href="#" class="btn btn-primary"><i class="fa fa-edit">&nbsp;</i>Edit Profile</a>
                 </div>
             </div>
