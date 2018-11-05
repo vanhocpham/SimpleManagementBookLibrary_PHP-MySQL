@@ -38,7 +38,7 @@ include_once '../templates/categories-header.php'
 <br><br><br>
 <div class="container">
     <h2>Author manage</h2>
-    <table class="table table-hover table-bordered table-sm">
+    <table class="table table-hover table-bordered table-sm white">
         <thead>
         <tr>
             <th>ID</th>
