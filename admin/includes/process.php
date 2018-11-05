@@ -97,7 +97,7 @@
                 $n++;
             }
             ?>
-                <tr>
+                <tr style="background-color: cadetblue">
                     <td colspan="5"><?php echo $pagination;?></td>
                 </tr>
             <?php
@@ -157,7 +157,7 @@ if(isset($_POST["manageAuthor"])){
             $n++;
         }
         ?>
-        <tr>
+        <tr style="background-color: cadetblue">
             <td colspan="5"><?php echo $pagination;?></td>
         </tr>
         <?php
@@ -215,7 +215,7 @@ if(isset($_POST["manageBook"])){
             $n++;
         }
         ?>
-        <tr>
+        <tr style="background-color: cadetblue">
             <td colspan="7"><?php echo $pagination;?></td>
         </tr>
         <?php
