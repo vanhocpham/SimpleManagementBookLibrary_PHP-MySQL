@@ -6,3 +6,9 @@ body {
     background-size: cover;
 
 }
+.white{
+    background-color: white;
+}
+table thead {
+    background-color: cadetblue;
+}
